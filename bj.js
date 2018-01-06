@@ -1,6 +1,6 @@
 // ==UserScript==
-// @name         МультиКач GUI
-// @description  LW_multi Bot
+// @name         MK
+// @description  LWMK
 // @match        https://www.lowadi.com/*
 // @version      0.4.5
 // @grant       none
