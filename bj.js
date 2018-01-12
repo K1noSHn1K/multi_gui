@@ -1,20 +1,27 @@
 var train1 = zavod = "", train2 = "", train3 = "", specialisation = "specialisationWestern", amSpecialisation = "western", compName = "", compName2 = "", walk1 = "foret", walk2 = "montagne", spec = "foret", KCK_Select = KCK_ALL, centerLocalisation = "centerLocalisationForet", nav = 0, mol = 360, name_male = "", name_female = "", offersToBeDone = 10, poroda = 38, shortPause1 = 70, shortPause2 = 100, mediumPause1 = 400, mediumPause2 = 500, longPause1 = 700, longPause2 = 800, centerCount = 2, centerPosition = 
 2;
+
 load_settings();
+
 var HayToGive = 12, OatsToGive = 10;
 if ("undefined" !== typeof e1) {
   var enduranceTComplet = e1, vitesseTComplet = e2, dressageTComplet = e3, galopTComplet = e4, trotTComplet = e5, sautTComplet = e6, foretComplet = b3, montagneComplet = b1;
 }
+
 var genetics = ["galopGenetique"], lastParentPage = "", lastParentSex = "", offers = "BJ_offers", doAbort = "BJ_doAbort";
+
 console.log("Abort state = " + ReadLocalStorage(doAbort));
 console.log("Offers count = " + ReadLocalStorage(offers));
+
 void 0 !== ReadLocalStorage(doAbort) && null !== ReadLocalStorage(doAbort) || SaveLocalStorage(doAbort, !1);
 "" != ReadLocalStorage(offers) && void 0 !== ReadLocalStorage(offers) && null !== ReadLocalStorage(offers) || SaveLocalStorage(offers, 0);
 var amunitionEquiped = "amunitionEquiped" + getMyParameterByName("sautGenetique");
 if (window.self != window.top) {
   throw "stop";
 }
+
 var pause_reload = 25000;
+
 !1 === /www.lowadi.com\/elevage\/bureau/.test(window.location.href) && setTimeout(reload, pause_reload);
 /www.lowadi.com\/elevage\/chevaux\/\?elevage=all-horses/.test(window.location.href) && history.go(-2);
 if (/\/marche\/noir\/object\?qName=/.test(window.location.href)) {
@@ -23,10 +30,12 @@ if (/\/marche\/noir\/object\?qName=/.test(window.location.href)) {
   var pause1 = pause + getRandomPause(2 * longPause1, 2 * longPause2);
   setTimeout(doR, pause1);
 }
+
 if (/\/elevage\/chevaux\/cheval\?id=/.test(window.location.href)) {
   var sante = document.getElementById("sante").textContent;
   75 < sante && (6 >= chevalAge ? -1 == chevalNom.indexOf(".") ? (ClearLocalStorage(amunitionEquiped), giveHorseName()) : MainProg() : 6 < chevalAge && 16 >= chevalAge ? MainProg() : HorseTraining());
 }
+
 function MainProg() {
   function a() {
     if (/elevage\/chevaux\/centreInscription\?id=/.test(document.body.innerHTML)) {
@@ -63,6 +72,7 @@ function MainProg() {
   var g = getRandomPause(shortPause1, shortPause2);
   setTimeout(a, g);
 }
+
 function HorseTraining() {
   16 < chevalAge && 22 >= chevalAge ? (OatsToGive = 12, Walks(walk1)) : void 0 === document.getElementsByClassName("action action-style-4 competition-barrel action")[0] && void 0 === document.getElementsByClassName("action action-style-4 competition-galop action")[0] && 36 < chevalAge ? EquipAmunition() : 100 > getMyParameterByName(walk1 + "Complet") ? (OatsToGive = HayToGive = 14, Walks(walk1)) : 100 > getMyParameterByName(train1 + "TComplet") ? (OatsToGive = 14, Train(train1)) : 100 > getMyParameterByName(train2 + 
   "TComplet") ? (OatsToGive = 12, Train(train2)) : 60 < $(".competition-" + compName).attr("data-tooltip").length && 120 > chevalAge ? (console.log("\u0421\u043e\u0440\u0435\u0432\u043d\u043e\u0432\u0430\u043d\u0438\u044f"), HayToGive = -1, OatsToGive = 10, 25 < chevalEnergie && 1270 > timeConvert() ? (console.log("-=CompnoVIP=- Energy: " + chevalEnergie + " Time: " + timeConvert()), CompNoVIP()) : (console.log("-=ANOTHER=- Energy: " + chevalEnergie + " Time: " + timeConvert()), setTimeout(carrot, 
@@ -70,13 +80,16 @@ function HorseTraining() {
     MainProg();
   }, 400)) : (30 > chevalEnergie && (setTimeout(carrot, 100), setTimeout(minEnergy, 400), setTimeout(mash(), 700), setTimeout(sleep, 1000), setTimeout(OR, 1100)), "feminin" == chevalSexe ? BirthProg() : "masculin" == chevalSexe && parseInt(ReadLocalStorage(offers), 10) < offersToBeDone ? GiveSluchki(5) : "masculin" == chevalSexe && parseInt(ReadLocalStorage(offers), 10) >= offersToBeDone && (ClearLocalStorage(offers), GoToMother()));
 }
+
 function doR() {
   document.getElementsByClassName("button button-style-2")[0].click();
 }
+
 function st() {
   var a = document.getElementById("inventaire-utilisation-standard");
   null !== a && a.click();
 }
+
 function GiveSluchki(a) {
   function b() {
     var a = document.getElementsByClassName("action action-style-4 panser action-disabled"), d = document.getElementsByClassName("action action-style-4 panser-rainbow action-disabled");
@@ -143,10 +156,12 @@ function GiveSluchki(a) {
   var n = getRandomPause(shortPause1, shortPause2);
   setTimeout(b, n);
 }
+
 function GoToMother() {
   var a = document.getElementsByClassName("horsename")[1].href;
   document.location.replace("http://www.lowadi.com/elevage/chevaux/cheval?id=" + a.substring(a.search("=") + 1));
 }
+
 function giveOfferForTeam() {
   var a = 0 + getRandomPause(mediumPause1, mediumPause2);
   setTimeout(openReproduction, a);
