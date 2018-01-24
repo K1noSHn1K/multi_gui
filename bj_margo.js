@@ -574,7 +574,8 @@ if (/www.lowadi.com\/elevage\/competition\/inscription\?cheval=/.test(window.loc
   setTimeout(checkComp, pause4);
 }
 function competitionInscript() {
-  document.getElementById("public").getElementsByClassName("button button-style-0").item(0).click();
+  //document.getElementById("public").getElementsByClassName("button button-style-0").item(0).click();
+  document.getElementsByClassName("button button-style-0").item(0).click();
 }
 function checkComp() {
   void 0 !== document.getElementsByClassName("fieldErrorText into")[0] && location.reload();
