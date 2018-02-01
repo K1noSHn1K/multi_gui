@@ -1,7 +1,8 @@
 zavod = "";
-var train1 = "dressage", train2 = "endurance", train3 = "galop", specialisation = "specialisationWestern", amSpecialisation = "western", compName = "reining", compName2 = "", walk1 = "", walk2 = "", spec = "foret", KCK_Select = KCK_ALL, centerLocalisation = "centerLocalisationForet", nav = 0, mol = 360, name_male = "", name_female = "", offersToBeDone = 10, poroda = 38, speed = "norm", shortPause1 = 100, shortPause2 = 120, mediumPause1 = 400, mediumPause2 = 500, longPause1 = 700, longPause2 = 800, 
-centerCount = 2, centerPosition = 2;
+var dabort = 0, train1 = "dressage", train2 = "endurance", train3 = "galop", specialisation = "specialisationWestern", amSpecialisation = "western", compName = "reining", compName2 = "", walk1 = "", walk2 = "", spec = "foret", KCK_Select = KCK_ALL, centerLocalisation = "centerLocalisationForet", nav = 0, mol = 360, name_male = "", name_female = "", offersToBeDone = 10, poroda = 38, speed = "norm", shortPause1 = 100, shortPause2 = 120, mediumPause1 = 400, mediumPause2 = 500, longPause1 = 700, longPause2 = 
+800, centerCount = 2, centerPosition = 2;
 load_settings();
+1 == dabort && (mol = 0);
 "fast" == speed && (shortPause1 = 70, shortPause2 = 100, mediumPause1 = 300, mediumPause2 = 400, longPause1 = 600, longPause2 = 700);
 "slow" == speed && (shortPause1 = 300, shortPause2 = 400, mediumPause1 = 600, mediumPause2 = 700, longPause1 = 1200, longPause2 = 1500);
 var HayToGive = 12, OatsToGive = 10;
@@ -565,8 +566,7 @@ if (/www.lowadi.com\/elevage\/competition\/inscription\?cheval=/.test(window.loc
   setTimeout(checkComp, pause4);
 }
 function competitionInscript() {
-  var d = document.getElementsByClassName('button button-style-0');
-	 d.item(0).click();
+  document.getElementsByClassName("button button-style-0").item(0).click();
 }
 function checkComp() {
   void 0 !== document.getElementsByClassName("fieldErrorText into")[0] && location.reload();
@@ -908,7 +908,7 @@ function KCK2() {
 }
 $("body").append('<div class="lwm_logo" style="display:block; z-index:9999; position:fixed; right:0;  top:50px; width:150px;"><img src="https://raw.githubusercontent.com/Crasher69/lowadi/master/horse.png" /></div>');
 $("body").append('<style>.lw {color:#fff;}</style><div class="lw_gui" style="display:block; z-index:9999; position:fixed; width:240px; height:auto; right:0; top:230px; padding:5px; background-color: rgba(0, 0, 0, 0.65);  border-radius: 10px 0px 0px 10px;"></div>');
-$(".lw_gui").append('<center><p style="color:#fff;"><span style="font-family: Arial,Helvetica,sans-serif; font-size: 12px; color:#F1F9F1;"><b>BotJack 0.5.0b</b></span></p> </center>');
+$(".lw_gui").append('<center><p style="color:#fff;"><span style="font-family: Arial,Helvetica,sans-serif; font-size: 12px; color:#F1F9F1;"><b>BotJack 0.5.0</b></span></p> </center>');
 $(".lw_gui").append('<center><p style="color:#fff;"><span style="font-family: Arial,Helvetica,sans-serif; font-size: 11px; color:#F1F9F1;">  </p></center> <hr>');
 $(".lw_gui").append('<span class="lw">id \u0437\u0430\u0432\u043e\u0434\u0430:</span> <input type="text" name="lw_zavod" id="lw_zavod" size="18"><br>');
 $(".lw_gui").append('<span class="lw">\u0422\u0440\u0435\u043d\u0438\u0440\u043e\u0432\u043a\u0430 1: &nbsp; &nbsp;</span> <select id="train1" name="train1">\t<option value="dressage">\u0432\u044b\u0435\u0437\u0434\u043a\u0430</option>\t<option value="galop">\u0433\u0430\u043b\u043e\u043f</option>\t<option value="saut">\u043f\u0440\u044b\u0436\u043a\u0438</option>\t<option value="trot">\u0440\u044b\u0441\u044c</option>\t<option value="endurance">\u0432\u044b\u043d\u043e\u0441\u043b\u0438\u0432\u043e\u0441\u0442\u044c</option>\t<option value="vitesse">\u0441\u043a\u043e\u0440\u043e\u0441\u0442\u044c</option>\t\t</select><br>');
@@ -924,6 +924,7 @@ $(".lw_gui").append('<span class="lw">\u0414\u043e\u043a\u0430\u0447\u0438\u0432
 $(".lw_gui").append('<span class="lw">\u0418\u043c\u044f \u043a\u043e\u0431\u044b\u043b:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> <input type="text" size="10" id="name_female" />');
 $(".lw_gui").append('<br><span class="lw">\u0418\u043c\u044f \u0416\u0435\u0440\u0435\u0431\u0446\u043e\u0432:&nbsp;&nbsp;</span><input type="text" size="10" id="name_male" />');
 $(".lw_gui").append('<span class="lw">\u041a\u0438\u0434\u0430\u0442\u044c \u0441\u043b\u0443\u0447\u0435\u043a:&nbsp; &nbsp;</span> <input type="text" size="10" id="offerstobedone" />');
+$(".lw_gui").append('<span class="lw">\u041d\u0415 \u0434\u0435\u043b\u0430\u0442\u044c \u0430\u0431\u043e\u0440\u0442\u044b: </span> <input type="checkbox" id="abort" /><br>');
 $(".lw_gui").append('<span class="lw">\u0421\u043b\u0443\u0447\u043a\u0438 \u0441: &nbsp; &nbsp; &nbsp;</span> <select id="poroda">\t\t<option value="58">\u0410\u043c\u0435\u0440\u0438\u043a\u0430\u043d\u0441\u043a\u0430\u044f </option>      <option value="38">\u0410\u043d\u0433\u043b\u0438\u0439\u0441\u043a\u0430\u044f </option>      <option value="43">\u0410\u043f\u043f\u0430\u043b\u0443\u0437\u0430</option>      <option value="31">\u0410\u0440\u0430\u0431\u0441\u043a\u0430\u044f </option>      <option value="60">\u0410\u0440\u0433\u0435\u043d\u0442\u0438\u043d\u0441\u043a\u0438\u0439 \u041a</option>      <option value="30">\u0410\u0445\u0430\u043b\u0442\u0435\u043a\u0438\u043d\u0441\u043a\u0430\u044f</option>      <option value="32">\u0411\u0443\u0434\u0435\u043d\u043d\u043e\u0432\u0441\u043a\u0430\u044f</option>      <option value="61">\u0413\u043e\u043b\u043b\u0430\u043d\u0434\u0441\u043a\u0430\u044f </option>      <option value="45">\u0413\u043e\u043b\u0448\u0442\u0438\u043d\u0441\u043a\u0430\u044f </option>      <option value="33">\u0414\u043e\u043d\u0441\u043a\u0430\u044f</option>      <option value="53">\u0418\u0440\u043b\u0430\u043d\u0434\u0441\u043a\u0430\u044f </option>      <option value="63">\u0418\u0441\u043b\u0430\u043d\u0434\u0441\u043a\u0430\u044f </option>      <option value="57">\u041a\u043d\u0430\u0431\u0441\u0442\u0440\u0443\u043f\u043f\u0435\u0440</option>      <option value="46">\u041b\u0438\u043f\u0438\u0446\u0446\u0430\u043d</option>      <option value="50">\u041b\u0443\u0437\u0438\u0442\u0430\u043d\u0441\u043a\u043e\u0439 </option>      <option value="55">\u041c\u0443\u0441\u0442\u0430\u043d\u0433</option>      <option value="56">\u041d\u043e\u043a\u043e\u0442\u0430</option>      <option value="39">\u041e\u0440\u043b\u043e\u0432\u0441\u043a\u0438\u0439 \u0440\u044b\u0441\u0430\u043a</option>      <option value="36">\u041f\u0435\u0439\u043d\u0442</option>      <option value="59">\u0422\u0435\u043d\u043d\u0435\u0441\u0438\u0439\u0441\u043a\u0430\u044f </option>      <option value="51">\u0422\u0440\u0430\u043a\u0435\u043d\u0435\u043d\u0441\u043a\u0430\u044f</option>      <option value="65">\u0424\u0440\u0430\u043d\u0446\u0443\u0437\u0441\u043a\u0438\u0439 </option>      <option value="34">\u0424\u0440\u0438\u0437</option>      <option value="35">\u0413\u0430\u043d\u043d\u043e\u0432\u0435\u0440\u0441\u043a\u0430\u044f</option>      <option value="52">\u0426\u044b\u0433\u0430\u043d\u0441\u043a\u0430\u044f</option>      <option value="44">\u0427\u0435\u0442\u0432\u0435\u0440\u0442\u044c\u043c\u0438\u043b\u044c\u043d\u0430\u044f </option>      <option value="37"> \u0438\u0441\u043f\u0430\u043d\u0441\u043a\u0430\u044f</option>      <option value="54">\u0428\u0430\u0433\u0438\u044f</option>      <option value="41">\u0411\u0435\u043b\u044c\u0433\u0438\u0439\u0441\u043a\u0438\u0439</option>      <option value="40">\u041a\u043e\u043d\u043d\u0435\u043c\u0430\u0440\u0430</option>      <option value="64"> \u0425\u0430\u0439\u043b\u0435\u043d\u0434</option>      <option value="42">\u0423\u044d\u043b\u044c\u0441\u043a\u0438\u0439</option>      <option value="70">\u0424\u044c\u043e\u0440\u0434</option>      <option value="48">\u0425\u0430\u0444\u043b\u0438\u043d\u0433\u0435\u0440</option>      <option value="62">\u0428\u0435\u0442\u043b\u0430\u043d\u0434\u0441\u043a\u0438\u0439 </option>\t\t</select>');
 $(".lw_gui").append('<span class="lw">\u0421\u043a\u043e\u0440\u043e\u0441\u0442\u044c:&nbsp; &nbsp; &nbsp;</span> <select id="speed" name="speed">\t<option value="fast">\u0411\u044b\u0441\u0442\u0440\u043e</option>\t<option value="norm">\u041d\u043e\u0440\u043c\u0430\u043b\u044c\u043d\u043e</option>\t<option value="slow">\u041c\u0435\u0434\u043b\u0435\u043d\u043d\u043e</option>\t</select><br>');
 $(".lw_gui").append('<br><br><center><span><button class="lwb_sett_gui">\u0421\u043e\u0445\u0440\u0430\u043d\u0438\u0442\u044c</span></center>');
@@ -934,6 +935,7 @@ form_settings();
 function save_settings() {
   var a = $("#lw_zavod").val(), b = $("#train1").val(), c = $("#train2").val(), f = $("#train3").val(), e = $("#walk1").val(), g = $("#walk2").val(), h = $("#specialisation").val(), k = $("#ksk_r").val(), l = $("#compName").val(), d = $("#compName2").val(), m = $("#offerstobedone").val(), n = $("#name_male").val(), p = $("#name_female").val(), q = $("#poroda").val(), r = $("#speed").val();
   nav = $("input#nav").prop("checked") ? "0" : "1";
+  dabort = $("input#abort").prop("checked") ? 1 : 0;
   localStorage.setItem("lwm_zavod", a);
   localStorage.setItem("lwm_train1", b);
   localStorage.setItem("lwm_train2", c);
@@ -949,6 +951,7 @@ function save_settings() {
   localStorage.setItem("lwm_name_female", p);
   localStorage.setItem("lwm_poroda", q);
   localStorage.setItem("lwm_nav", nav);
+  localStorage.setItem("lwm_dabort", dabort);
   localStorage.setItem("lwm_speed", r);
   alert("\u041d\u0430\u0441\u0442\u0440\u043e\u0439\u043a\u0438 \u0441\u043e\u0445\u0440\u0430\u043d\u0435\u043d\u044b! \u0422\u0435\u043f\u0435\u0440\u044c \u043c\u043e\u0436\u043d\u043e \u043a\u0430\u0447\u0430\u0442\u044c!");
 }
@@ -970,6 +973,7 @@ function load_settings() {
   name_female = localStorage.getItem("lwm_name_female");
   poroda = localStorage.getItem("lwm_poroda");
   nav = localStorage.getItem("lwm_nav");
+  dabort = localStorage.getItem("lwm_dabort");
   speed = localStorage.getItem("lwm_speed");
 }
 function form_settings() {
@@ -993,6 +997,7 @@ function form_settings() {
   console.log("speed=" + speed);
   $("#speed option[value='" + speed + "']").attr("selected", "selected");
   "0" == nav ? $("#nav").prop("checked", !0) : $("#nav").prop("checked", !1);
+  1 == dabort ? $("#abort").prop("checked", !0) : $("#abort").prop("checked", !1);
 }
 function CompNoVIP_Second() {
   function a() {
