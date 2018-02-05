@@ -188,7 +188,28 @@ function BirthProg() {
   console.log(doAbort + "=" + ReadLocalStorage(doAbort));
   var a = null !== document.getElementById("alerteVeterinaireContent") && (0 == ReadLocalStorage(doAbort) || chevalAge > mol);
   console.log("\u041d\u0443\u0436\u043d\u043e \u0440\u043e\u0436\u0430\u0442\u044c = " + a);
-  a ? document.getElementById("lienVeterinaire").click() : 800 < timeConvert() ? (a = getRandomPause(mediumPause1, mediumPause2), setTimeout(MainProg, a)) : 0 == nav ? (a = getRandomPause(shortPause1, shortPause2), setTimeout(openReproduction, a), a += getRandomPause(mediumPause1, mediumPause2), setTimeout(Train1, a)) : (a = getRandomPause(shortPause1, shortPause2), setTimeout(openReproduction, a), a += getRandomPause(mediumPause1, mediumPause2), setTimeout(MainProg, a));
+  if (a) {
+    document.getElementById("lienVeterinaire").click();
+  } else {
+    if (800 < timeConvert()) {
+      a = getRandomPause(mediumPause1, mediumPause2), setTimeout(MainProg, a);
+    } else {
+      if (0 == nav) {
+        if ("1" == $(".action-style-4.saillir").length && !1 === $(".action-style-4.saillir").hasClass("action-disabled")) {
+          var b = getRandomPause(shortPause1, shortPause2);
+          setTimeout(openReproduction, b);
+        } else {
+          b = getRandomPause(shortPause1, shortPause2), setTimeout(openReproduction, b), a = b + getRandomPause(mediumPause1, mediumPause2), setTimeout(Train1, a);
+        }
+      } else {
+        if ("1" != $(".action-style-4.saillir").length || !1 !== $(".action-style-4.saillir").hasClass("action-disabled")) {
+          a = b + getRandomPause(mediumPause1, mediumPause2), setTimeout(MainProg, a);
+        }
+        b = getRandomPause(shortPause1, shortPause2);
+        setTimeout(openReproduction, b);
+      }
+    }
+  }
 }
 function Train1() {
   void 0 !== document.getElementsByClassName("action action-style-4 competition-" + compName + " action-disabled")[0] ? MainProg() : 100 > getMyParameterByName("dressageTComplet") ? (OatsToGive = 12, HayToGive = -1, Train("dressage")) : 100 > getMyParameterByName("enduranceTComplet") ? (OatsToGive = 12, Train("endurance")) : 100 > getMyParameterByName("sautTComplet") ? (OatsToGive = 12, Train("saut")) : 100 > getMyParameterByName("trotTComplet") ? (OatsToGive = 12, Train("trot")) : 100 > getMyParameterByName("galopTComplet") ? 
@@ -908,7 +929,7 @@ function KCK2() {
 }
 $("body").append('<div class="lwm_logo" style="display:block; z-index:9999; position:fixed; right:0;  top:50px; width:150px;"><img src="https://raw.githubusercontent.com/Crasher69/lowadi/master/horse.png" /></div>');
 $("body").append('<style>.lw {color:#fff;}</style><div class="lw_gui" style="display:block; z-index:9999; position:fixed; width:240px; height:auto; right:0; top:230px; padding:5px; background-color: rgba(0, 0, 0, 0.65);  border-radius: 10px 0px 0px 10px;"></div>');
-$(".lw_gui").append('<center><p style="color:#fff;"><span style="font-family: Arial,Helvetica,sans-serif; font-size: 12px; color:#F1F9F1;"><b>BotJack 0.5.0</b></span></p> </center>');
+$(".lw_gui").append('<center><p style="color:#fff;"><span style="font-family: Arial,Helvetica,sans-serif; font-size: 12px; color:#F1F9F1;"><b>BotJack 0.5.1</b></span></p> </center>');
 $(".lw_gui").append('<center><p style="color:#fff;"><span style="font-family: Arial,Helvetica,sans-serif; font-size: 11px; color:#F1F9F1;">  </p></center> <hr>');
 $(".lw_gui").append('<span class="lw">id \u0437\u0430\u0432\u043e\u0434\u0430:</span> <input type="text" name="lw_zavod" id="lw_zavod" size="18"><br>');
 $(".lw_gui").append('<span class="lw">\u0422\u0440\u0435\u043d\u0438\u0440\u043e\u0432\u043a\u0430 1: &nbsp; &nbsp;</span> <select id="train1" name="train1">\t<option value="dressage">\u0432\u044b\u0435\u0437\u0434\u043a\u0430</option>\t<option value="galop">\u0433\u0430\u043b\u043e\u043f</option>\t<option value="saut">\u043f\u0440\u044b\u0436\u043a\u0438</option>\t<option value="trot">\u0440\u044b\u0441\u044c</option>\t<option value="endurance">\u0432\u044b\u043d\u043e\u0441\u043b\u0438\u0432\u043e\u0441\u0442\u044c</option>\t<option value="vitesse">\u0441\u043a\u043e\u0440\u043e\u0441\u0442\u044c</option>\t\t</select><br>');
