@@ -196,7 +196,28 @@ function BirthProg() {
   console.log(doAbort + "=" + ReadLocalStorage(doAbort));
   var a = null !== document.getElementById("alerteVeterinaireContent") && (0 == ReadLocalStorage(doAbort) || chevalAge > mol);
   console.log("\u041d\u0443\u0436\u043d\u043e \u0440\u043e\u0436\u0430\u0442\u044c = " + a);
-  a ? document.getElementById("lienVeterinaire").click() : 800 < timeConvert() ? (a = getRandomPause(mediumPause1, mediumPause2), setTimeout(MainProg, a)) : 0 == nav ? (a = getRandomPause(shortPause1, shortPause2), setTimeout(openReproduction, a), a += getRandomPause(mediumPause1, mediumPause2), setTimeout(Train1, a)) : (a = getRandomPause(shortPause1, shortPause2), setTimeout(openReproduction, a), a += getRandomPause(mediumPause1, mediumPause2), setTimeout(MainProg, a));
+  if (a) {
+    document.getElementById("lienVeterinaire").click();
+  } else {
+    if (800 < timeConvert()) {
+      a = getRandomPause(mediumPause1, mediumPause2), setTimeout(MainProg, a);
+    } else {
+      if (0 == nav) {
+        if ("1" == $(".action-style-4.saillir").length && !1 === $(".action-style-4.saillir").hasClass("action-disabled")) {
+          var b = getRandomPause(shortPause1, shortPause2);
+          setTimeout(openReproduction, b);
+        } else {
+          b = getRandomPause(shortPause1, shortPause2), setTimeout(openReproduction, b), a = b + getRandomPause(mediumPause1, mediumPause2), setTimeout(Train1, a);
+        }
+      } else {
+        if ("1" != $(".action-style-4.saillir").length || !1 !== $(".action-style-4.saillir").hasClass("action-disabled")) {
+          a = b + getRandomPause(mediumPause1, mediumPause2), setTimeout(MainProg, a);
+        }
+        b = getRandomPause(shortPause1, shortPause2);
+        setTimeout(openReproduction, b);
+      }
+    }
+  }
 }
 function Train1() {
   void 0 !== document.getElementsByClassName("action action-style-4 competition-" + compName + " action-disabled")[0] ? MainProg() : 100 > getMyParameterByName("dressageTComplet") ? (OatsToGive = 12, HayToGive = -1, Train("dressage")) : 100 > getMyParameterByName("enduranceTComplet") ? (OatsToGive = 12, Train("endurance")) : 100 > getMyParameterByName("sautTComplet") ? (OatsToGive = 12, Train("saut")) : 100 > getMyParameterByName("trotTComplet") ? (OatsToGive = 12, Train("trot")) : 100 > getMyParameterByName("galopTComplet") ? 
